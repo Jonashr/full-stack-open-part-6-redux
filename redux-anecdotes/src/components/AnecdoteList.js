@@ -3,7 +3,7 @@ import Anecdote from './Anecdote'
 import {vote} from '../reducers/anecdoteReducer'
 
 const AnecdoteList = ( {store} ) => {
-    const sortedList = store.getState().sort((a, b) => a.votes - b.votes).reverse()
+    const sortedList = store.getState().anecdotes.sort((a, b) => a.votes - b.votes).reverse()
     return(
         <div>
             {sortedList.map(anecdote =>
