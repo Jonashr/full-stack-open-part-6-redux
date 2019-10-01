@@ -1,19 +1,13 @@
 import React from 'react';
-import Anecdotes from './components/Anecdotes'
-import NewAnecdote from './components/NewAnecdote'
+import AnecdoteList from './components/AnecdoteList'
+import AnecdoteForm from './components/AnecdoteForm'
 
 const App = (props) => {
-
-  const vote = (id) => {
-    console.log('vote', id)
-  }
-
-  console.log('Props.store', props.store.getState())
-
   return (
     <div>
-      <Anecdotes store={props.store} />
-      <NewAnecdote store={props.store} />
+      <h2>Anecdotes</h2>
+      <AnecdoteList store={props.store} />
+      <AnecdoteForm store={props.store} />
     </div>
   )
 }

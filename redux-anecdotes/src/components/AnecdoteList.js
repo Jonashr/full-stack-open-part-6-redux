@@ -2,7 +2,7 @@ import React from 'react'
 import Anecdote from './Anecdote'
 import {vote} from '../reducers/anecdoteReducer'
 
-const Anecdotes = ( {store} ) => {
+const AnecdoteList = ( {store} ) => {
     const sortedList = store.getState().sort((a, b) => a.votes - b.votes).reverse()
     return(
         <div>
@@ -20,4 +20,4 @@ const Anecdotes = ( {store} ) => {
     )
 }
 
-export default Anecdotes
+export default AnecdoteList
