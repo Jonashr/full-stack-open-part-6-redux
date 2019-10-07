@@ -1,4 +1,5 @@
 
+
 const initialState =  {
         message: 'Initial message'
 }
@@ -34,6 +35,29 @@ export const removeNotification = () => {
         notification: {
             message: ''
         }
+    }
+}
+
+export const setNotification = (notification, milliseconds) => {
+    return async dispatch => {
+        await dispatch({
+            type: 'SET_NOTIFICATION',
+            notification: {
+                message: notification
+            }
+        })
+
+        await setTimeout(() => {
+            dispatch({
+                type: 'REMOVE_NOTIFICATION',
+                notification: {
+                    message: ''
+                }
+            })
+          }, milliseconds)
+
+
+        
     }
 }
 
