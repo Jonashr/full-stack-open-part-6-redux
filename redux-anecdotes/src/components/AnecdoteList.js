@@ -11,12 +11,12 @@ const AnecdoteList = (props) => {
                 <Anecdote
                     key={anecdote.id}
                     anecdote={anecdote}
-                    handleClick={() => 
-                        props.vote(anecdote.id,
-                        props.changeNotification(`You voted for ${anecdote.content}`),
+                    handleClick={() => {
+                        props.vote(anecdote.id, anecdote);
+                        props.changeNotification(`You voted for ${anecdote.content}`);
                         setTimeout(() =>  
-                        props.removeNotification(), 5000))
-                    }
+                        props.removeNotification(), 5000);
+                    }}
                 />
           )}
         </div>
@@ -24,6 +24,7 @@ const AnecdoteList = (props) => {
     )
 
 }
+
 const mapDispatchToProps = {
     vote, changeNotification, removeNotification,
 }
