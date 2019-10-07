@@ -5,9 +5,22 @@ import { changeNotification, removeNotification } from '../reducers/notification
 
 const AnecdoteList = ( {store} ) => {
     const sortedList = store.getState().anecdotes.sort((a, b) => a.votes - b.votes).reverse()
+    const filter = store.getState().filter
+
+    const anecdotesToBeDisplayed = () => {
+        console.log(filter)
+        if(filter === 'ALL') {
+            return sortedList
+        } else {
+            return sortedList.filter(anecdote => anecdote.content.includes(filter))
+        }
+    }
+
+    console.log(anecdotesToBeDisplayed())
+
     return(
         <div>
-            {sortedList.map(anecdote =>
+            {anecdotesToBeDisplayed().map(anecdote =>
                 <Anecdote
                     key={anecdote.id}
                     anecdote={anecdote}
