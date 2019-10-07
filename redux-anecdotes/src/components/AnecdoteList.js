@@ -1,6 +1,7 @@
 import React from 'react'
 import Anecdote from './Anecdote'
 import {vote} from '../reducers/anecdoteReducer'
+import { changeNotification, removeNotification } from '../reducers/notificationReducer'
 
 const AnecdoteList = ( {store} ) => {
     const sortedList = store.getState().anecdotes.sort((a, b) => a.votes - b.votes).reverse()
@@ -11,7 +12,11 @@ const AnecdoteList = ( {store} ) => {
                     key={anecdote.id}
                     anecdote={anecdote}
                     handleClick={() => 
-                        store.dispatch(vote(anecdote.id))
+                        store.dispatch(vote(anecdote.id),
+                        store.dispatch(changeNotification(`You voted for ${anecdote.content}`)),
+                        setTimeout(() =>  
+                            store.dispatch(removeNotification()), 5000)
+                        )
                     }
                 />
           )}
