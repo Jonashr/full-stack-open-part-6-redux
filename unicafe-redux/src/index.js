@@ -24,13 +24,19 @@ const App = () => {
     })
   }
 
+  const reset = () => {
+    store.dispatch({
+      type: 'RESET'
+    })
+  }
+
 
   return (
     <div>
       <button onClick={good}>good</button>
       <button onClick={ok}>ok</button>
       <button onClick={bad}>bad</button>
-      <button>reset stats</button>
+      <button onClick={reset}>reset stats</button>
       <div>good {store.getState().good}</div>
       <div>neutral {store.getState().ok}</div>
       <div>bad {store.getState().bad}</div>

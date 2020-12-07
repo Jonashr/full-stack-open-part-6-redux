@@ -5,22 +5,26 @@ const initialState = {
 }
 
 const counterReducer = (state = initialState, action) => {
-    console.log(action)
-    let newState = {
-        good: state.good,
-        ok: state.ok,
-        bad: state.bad
-    }
     switch(action.type) {
         case 'GOOD':
-            newState.good = newState.good + 1
-            return newState
+          return {
+            ...state,
+            good: state.good + 1
+          }
         case 'OK':
-            newState.ok = newState.ok + 1
-            return newState
+          return {
+            ...state,
+            ok: state.ok + 1
+          }
         case 'BAD':
-            newState.bad = newState.bad + 1
-            return newState 
+          return {
+            ...state,
+            bad: state.bad + 1
+          }
+        case 'RESET': 
+          return {
+            ...initialState
+          }
         default:
             return state           
     }
